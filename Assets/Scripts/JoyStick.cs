@@ -37,7 +37,7 @@ public class JoyStick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
 	public void ControlJoystickLever(PointerEventData eventData)
 	{
-		inputDir = (eventData.position) - rectTransform.anchoredPosition;
+		inputDir = eventData.position - (rectTransform.anchoredPosition + (Vector2.right * (Screen.width / 2)));
 		//레버 경계설정 
 		var clampedDir = inputDir.magnitude < leverRange ? inputDir
 			: inputDir.normalized * leverRange;

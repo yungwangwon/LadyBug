@@ -40,19 +40,19 @@ public class GameManager : MonoBehaviour
 
     void SpawnEnemy()
     {
-        //풀링을 이용한 적생성
+        //오브젝트풀링을 이용한 적생성
         GameObject enemy = objmanager.MakeObj("enemy");
         Enemy enemylogic = enemy.GetComponent<Enemy>();
 
         //스폰포인트 설정, 방향 설정
 		int rand = Random.Range(0, spawnpoint.Length);
         enemy.transform.position = spawnpoint[rand].position;
-        enemylogic.SetDir(player.transform.position - enemy.transform.position);
+        enemylogic.SetDir(player.transform.position,  enemy.transform.position);
 
-    }
+	}
 
 	//아이템 생성
-    void SpawnItem()
+	void SpawnItem()
     {
 		GameObject spawnitem = null;
 		//랜덤 아이템 스폰

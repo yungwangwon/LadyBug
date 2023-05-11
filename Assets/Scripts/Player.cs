@@ -38,6 +38,9 @@ public class Player : MonoBehaviour
 		if (pos.y < 0f) pos.y = 0f;
 		if (pos.y > 1f) pos.y = 1f;
 		transform.position = Camera.main.ViewportToWorldPoint(pos); //적용
+
+		//회전
+		transform.rotation = Quaternion.Euler(0,0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90);
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)

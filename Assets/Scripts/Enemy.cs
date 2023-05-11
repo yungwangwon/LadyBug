@@ -77,8 +77,10 @@ public class Enemy : MonoBehaviour
 
 
 	//방향 설정
-	public void SetDir(Vector3 vec3)
+	public void SetDir(Vector2 pvec, Vector2 evec)
     {
-        dir = vec3.normalized;
-    }
+		dir = (pvec - evec).normalized;
+
+		transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90);
+	}
 }
